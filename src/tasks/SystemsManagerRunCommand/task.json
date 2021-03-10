@@ -219,6 +219,24 @@
             "helpMarkDown": "The key prefix (folder structure) within the S3 bucket where the S3 objeccts containing the responses should be stored."
         },
         {
+            "name": "enableCloudWatchLogs",
+            "label": "Enable CloudWatch Logs",
+            "type": "boolean",
+            "required": false,
+            "defaultValue": "",
+            "groupName": "output",
+            "helpMarkDown": "If selected, send command output to Amazon CloudWatch logs"
+        },
+        {
+            "name": "logGroupName",
+            "label": "Log group name",
+            "type": "string",
+            "required": false,
+            "defaultValue": "",
+            "groupName": "output",
+            "helpMarkDown": "You can specify the name of your log group. Log groups are groups of log streams that share the same retention, monitoring, and access control settings."
+        },
+        {
             "name": "commandIdOutputVariable",
             "type": "string",
             "label": "Command ID Output Variable",

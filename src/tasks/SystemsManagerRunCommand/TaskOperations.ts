@@ -20,6 +20,12 @@ export class TaskOperations {
         if (this.taskParameters.outputS3BucketName) {
             request.OutputS3BucketName = this.taskParameters.outputS3BucketName
         }
+        if (this.taskParameters.enableCloudWatchLogs) {
+            request.OutputS3KeyPrefix = this.taskParameters.enableCloudWatchLogs
+        }
+        if (this.taskParameters.logGroupName) {
+            request.OutputS3BucketName = this.taskParameters.logGroupName
+        }
         if (this.taskParameters.timeout) {
             request.TimeoutSeconds = parseInt(this.taskParameters.timeout, 10)
         }
@@ -75,6 +81,13 @@ export class TaskOperations {
 
             if (this.taskParameters.notificationEvents) {
                 request.NotificationConfig.NotificationEvents = [this.taskParameters.notificationEvents]
+            }
+        }
+
+        if (this.taskParameters.enableCloudWatchLogs) {
+            request.CloudWatchOutputConfig = {
+                CloudWatchLogGroupName: this.taskParameters.logGroupName,
+                CloudWatchOutputEnabled: this.taskParameters.enableCloudWatchLogs
             }
         }
 
