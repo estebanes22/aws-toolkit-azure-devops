@@ -132,6 +132,16 @@ describe('Systems Manager Run Command', () => {
         expect(ssm.sendCommand).toBeCalledTimes(1)
     })
 
+    test('Adds cloudwatch log group if it exists', async () => {
+        expect.assertions(2)
+        const ssm = new SSM() as any
+        ssm.sendCommand = jest.fn(args => {
+            expect(args.CloudWatchOutputConfig.CloudWatchLogGroupName).toBe('')
+
+            return systemsManagerFails
+        })
+    })
+
     test('Happy path', async () => {
         expect.assertions(1)
         const ssm = new SSM() as any
